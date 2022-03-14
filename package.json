@@ -5,6 +5,10 @@
   "main": "server.js",
   "repository": "https://github.com/abeertech01/pizza-order-tracking.git",
   "author": "Abeer <abeer.technology@gmail.com>",
+  "scripts": {
+    "serve": "node server.js",
+    "dev": "nodemon server.js"
+  },
   "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.6",

@@ -5,4 +5,7 @@
     - ejs express-ejs-layouts
   - Dev dependencies
     - nodemon
-[-] Create Express server - Create a server.js file
+[+] Create Express server - Create a server.js file
+[-] Create Home page using Html and css
+  - include tailwind css
+[-] Create Cart page
