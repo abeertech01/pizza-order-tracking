@@ -1,0 +1,8 @@
+[+] Create directory structure
+[+] Create an NPM project and install all dependencies
+  - dependencies
+    - express
+    - ejs express-ejs-layouts
+  - Dev dependencies
+    - nodemon
+[-] Create Express server - Create a server.js file
