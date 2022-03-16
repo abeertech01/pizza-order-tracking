@@ -39,9 +39,30 @@ section.hero {
   }
 }
 .btn-primary {
-  background: $primary;
+  background-color: $primary;
   transition: $smooth;
   &:hover {
     background: $primary-hover;
+  }
+}
+.somossha {
+  background-color: #fe5f1e;
+}
+section.cart {
+  background: $secondary;
+  .amount {
+    color: $primary;
+  }
+}
+section.login {
+  background: $secondary;
+  min-height: 100vh;
+  min-height: calc(100vh - 86px);
+
+  a {
+    color: $primary;
+    &:hover {
+      color: $primary-hover;
+    }
   }
 }

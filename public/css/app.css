@@ -41,11 +41,37 @@ section.hero {
 }
 
 .btn-primary {
-  background: #fe5f1e;
+  background-color: #fe5f1e;
   transition: all 0.3s ease-in-out;
 }
 
 .btn-primary:hover {
   background: #b23301;
+}
+
+.somossha {
+  background-color: #fe5f1e;
+}
+
+section.cart {
+  background: #f8f8f8;
+}
+
+section.cart .amount {
+  color: #fe5f1e;
+}
+
+section.login {
+  background: #f8f8f8;
+  min-height: 100vh;
+  min-height: calc(100vh - 86px);
+}
+
+section.login a {
+  color: #fe5f1e;
+}
+
+section.login a:hover {
+  color: #b23301;
 }
 
