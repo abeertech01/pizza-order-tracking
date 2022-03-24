@@ -27342,7 +27342,13 @@ function updateStatus(order) {
   });
 }
 
-updateStatus(order);
+updateStatus(order); // Socket
+
+var socket = io(); // Join
+
+if (order) {
+  socket.emit("join", "order_".concat(order._id));
+}
 
 /***/ }),
 

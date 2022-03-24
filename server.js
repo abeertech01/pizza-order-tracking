@@ -70,4 +70,15 @@ app.set("view engine", "ejs");
 
 require("./routes/web")(app);
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+const server = app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
+// Socket
+const io = require("socket.io")(server);
+io.on("connection", (socket) => {
+  // Join
+  console.log(socket.id);
+  socket.on("join", (roomName) => {
+    console.log(roomName);
+    socket.join(roomName);
+  });
+});
