@@ -11,3 +11,5 @@ Ans: when we update from controller we make an update to the database. But when 
 So, controller's update is saved to database but socket's update gets destroyed when one reloads.
 
 reload destroys socket's update and brings database's update.
+
+---
