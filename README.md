@@ -1,6 +1,6 @@
 ## Important Notes
 
----
+### **There is a way to update the status of pizza making process by the admin who is responsible to deliver the product. Anybody cannot sign up as an admin. Admin profile is saved while developing. Ask developer about the feature and get the whole of it**
 
 ### QnA
 
