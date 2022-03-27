@@ -13,8 +13,7 @@ const passport = require("passport");
 const Emitter = require("events");
 
 // Database connection
-const url = "mongodb://localhost/pizza-order";
-mongoose.connect(url, {
+mongoose.connect(process.env.MONGO_CONNECTION_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
