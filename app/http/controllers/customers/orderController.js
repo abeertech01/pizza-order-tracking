@@ -58,6 +58,9 @@ function orderController() {
                       "Order placed But Payment failed, you can pay at delivery time",
                   });
                 });
+            } else {
+              delete req.session.cart;
+              return res.json({ message: "Order placed successfully" });
             }
           });
         })

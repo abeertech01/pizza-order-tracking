@@ -1,5 +1,6 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { placeOrder } from "./apiService";
+import { CardWidget } from "./CardWidget";
 
 export async function initStripe() {
   const stripe = await loadStripe(
@@ -8,26 +9,24 @@ export async function initStripe() {
   let card = null;
 
   function mountWidget() {
-    const elements = stripe.elements();
-
-    let style = {
-      base: {
-        color: "#32325d",
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSmoothing: "antialiased",
-        fontSize: "16px",
-        "::placeholder": {
-          color: "#aab7c4",
-        },
-      },
-      invalid: {
-        color: "#fa755a",
-        iconColor: "#fa755a",
-      },
-    };
-
-    card = elements.create("card", { style, hidePostalCode: true });
-    card.mount("#card-element");
+    // const elements = stripe.elements();
+    // let style = {
+    //   base: {
+    //     color: "#32325d",
+    //     fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    //     fontSmoothing: "antialiased",
+    //     fontSize: "16px",
+    //     "::placeholder": {
+    //       color: "#aab7c4",
+    //     },
+    //   },
+    //   invalid: {
+    //     color: "#fa755a",
+    //     iconColor: "#fa755a",
+    //   },
+    // };
+    // card = elements.create("card", { style, hidePostalCode: true });
+    // card.mount("#card-element");
   }
 
   const paymentType = document.querySelector("#paymentType");
@@ -38,7 +37,8 @@ export async function initStripe() {
     console.log(e.target.value);
     if (e.target.value === "card") {
       // Display Widget
-      mountWidget();
+      card = new CardWidget(stripe);
+      card.mount();
     } else {
       card.destroy();
     }
@@ -47,7 +47,7 @@ export async function initStripe() {
   // Ajax call
   const paymentForm = document.querySelector("#payment-form");
   if (paymentForm) {
-    paymentForm.addEventListener("submit", (e) => {
+    paymentForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       let formData = new FormData(paymentForm);
       let formObject = {};
@@ -61,16 +61,20 @@ export async function initStripe() {
         return;
       }
 
+      const token = await card.createToken();
+      formObject.stripeToken = token.id;
+      placeOrder(formObject);
+
       // Verify card
-      stripe
-        .createToken(card)
-        .then((result) => {
-          formObject.stripeToken = result.token.id;
-          placeOrder(formObject);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      // stripe
+      //   .createToken(card)
+      //   .then((result) => {
+      //     formObject.stripeToken = result.token.id;
+      //     placeOrder(formObject);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
 
       //
     });
