@@ -84,7 +84,6 @@ const server = app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 const io = require("socket.io")(server);
 io.on("connection", (socket) => {
   // Join
-  console.log(socket.id);
   socket.on("join", (roomName) => {
     socket.join(roomName);
   });

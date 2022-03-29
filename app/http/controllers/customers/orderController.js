@@ -34,6 +34,7 @@ function orderController() {
                 })
                 .then(() => {
                   placedOrder.paymentStatus = true;
+                  placedOrder.paymentType = paymentType;
                   placedOrder
                     .save()
                     .then((ord) => {
